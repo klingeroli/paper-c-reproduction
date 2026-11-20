@@ -20,7 +20,6 @@ My first step was to understand and check the numbers reported in Sections 3–5
 | --- | --- |
 | `check_costs.py` | Calculates token shares and historical cost estimates from the paper's rounded token counts. |
 | `README.md` | Explains the method, output and limitations. |
-| `MEETING_NOTES.md` | Notes to help discuss the work and next steps. |
 
 The script uses only standard Python; it makes **no API requests** and does **not** generate new AI research runs.
 
@@ -74,19 +73,21 @@ The script should produce results close to the following reported values:
 
 **Why don't all the cents match?** The PDF rounds token counts before displaying them. The script uses those rounded counts, while the original cost results were calculated using more precise records. The small differences do not, by themselves, indicate an error.
 
-### Terminal output screenshot
+### Terminal output results
 
-I'll attach a screenshot of my own terminal output here after running the script.
+PAPER C: CHECK OF ROUNDED PDF TABLE VALUES
+Decision tokens: 15.24M
+Research tokens: 78.57M
+Research token share: 83.75% (paper: 83.8%)
+Decision token share: 16.25% (paper: 16.2%)
 
-<!-- Upload your screenshot to an images/ folder in this repository, then remove the leading "<!--" and trailing "-->" around the line below. -->
+Research share of all-Opus-priced dollars: 66.44% (paper: 66.4%)
+All-Opus counterfactual: $201.68 (paper: $201.67)
+Tiered (sonnet_intro): $121.29 (paper: $121.32); saving 39.9%
+Tiered (sonnet_standard): $148.08 (paper: $148.10); saving 26.6%
 
-<!-- ![Output from running check_costs.py](images/check-costs-output.png) -->
-
-**To add the screenshot on GitHub:** create an `images` folder, upload a screenshot named `check-costs-output.png`, then replace the commented image line above with:
-
-```markdown
-![Output from running check_costs.py](images/check-costs-output.png)
-```
+Small dollar differences are expected: PDF token vectors are rounded.
+This checks rate-card arithmetic, NOT original transcripts or parser deduplication.
 
 ## 6. What this does *not* reproduce yet
 
